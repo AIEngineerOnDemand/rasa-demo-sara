@@ -1,5 +1,58 @@
 # Sara - the Rasa Demo Bot
+# Rasa Demo
 
+This is a modified version of the Rasa Demo that can be run using Docker.
+
+## Prerequisites
+
+- Docker installed on your machine.
+
+## Steps to run the project
+
+1. Build the Docker image for the action server:
+
+    ```bash
+    docker build -t rasa_demo_action_server_image .
+    ```
+
+2. Run the Docker container for the action server:
+
+    ```bash
+    docker run -p 5055:5055 rasa_demo_action_server_image
+    ```
+
+3. Run the Duckling container:
+
+    ```bash
+    docker run -p 8000:8000 rasa/duckling
+    ```
+
+4. Train the Rasa model using the corresponding Rasa image:
+
+    ```bash
+    docker run -it -v ${PWD}:/app rasa/rasa:2.8.21-full train --domain domain.yml --data data --out models/dialogue
+    ```
+
+5. Run Rasa in debug mode with the trained model:
+
+    ```bash
+    docker run -it -v ${PWD}:/app -p 5005:5005 rasa/rasa:2.8.21-full shell --debug --model models/dialogue
+    ```
+
+## Notes
+
+- The `-t` option in the `docker build` command is used to name the Docker image.
+- The `.` at the end of the `docker build` command specifies the build context, which is the current directory in this case.
+- If you make changes to the Python files, you need to rebuild the Docker image to include the changes.
+- The `spacy` model version used is `2.2.4` and the compatible `en_core_web_md` model version is `2.2.5`.
+
+## :surfer: Introduction
+## Notes
+
+- The `-t` option in the `docker build` command is used to name the Docker image.
+- The `.` at the end of the `docker build` command specifies the build context, which is the current directory in this case.
+- If you make changes to the Python files, you need to rebuild the Docker image to include the changes.
+- The `spacy` model version used is `2.2.4` and the compatible `en_core_web_md` model version is `2.2.5`.
 ## :surfer: Introduction
 The purpose of this repo is to showcase a contextual AI assistant built with the open source Rasa framework.
 
