@@ -7,9 +7,10 @@ from dotenv import load_dotenv
 
 # Load environment variables
 # needs to happen before anything else (to properly instantiate constants)
-load_dotenv(verbose=True, override=True)
-
+#load_dotenv(verbose=True, override=True)
 import os
+env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '.env')
+
 
 mailchimp_api_key = os.environ.get("MAILCHIMP_API_KEY", "")
 
