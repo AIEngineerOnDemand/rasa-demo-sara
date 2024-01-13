@@ -15,15 +15,21 @@ from rasa_sdk.events import (
     EventType,
 )
 
-from actions import config
-from actions.api import community_events
-from actions.api.algolia import AlgoliaAPI
-from actions.api.discourse import DiscourseAPI
-from actions.api.gdrive_service import GDriveService
-from actions.api.mailchimp import MailChimpAPI
-from actions.api.rasaxapi import RasaXAPI
+# from actions import config
+# from actions.api import community_events
+# from actions.api.algolia import AlgoliaAPI
+# from actions.api.discourse import DiscourseAPI
+# from actions.api.gdrive_service import GDriveService
+# from actions.api.mailchimp import MailChimpAPI
+# from actions.api.rasaxapi import RasaXAPI
 
-USER_INTENT_OUT_OF_SCOPE = "out_of_scope"
+from . import config
+from .api import community_events
+from .api.algolia import AlgoliaAPI
+from .api.discourse import DiscourseAPI
+from .api.gdrive_service import GDriveService
+from .api.mailchimp import MailChimpAPI
+from .api.rasaxapi import RasaXAPI
 
 logger = logging.getLogger(__name__)
 
